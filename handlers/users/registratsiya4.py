@@ -6,6 +6,8 @@ from keyboards.inline.tasdiqlash import tasdiqlash
 from aiogram.dispatcher.filters import state
 from keyboards.inline.age import ages
 from aiogram.dispatcher import FSMContext
+from aiogram.types import ReplyKeyboardRemove
+from keyboards.default.tumanlar import tumanlar
 kanal_data = "-1001632556657"
 
 
@@ -22,7 +24,7 @@ def fayl_4(t_ism):
 @dp.message_handler(text="⭐️ Start Registration", state="*")
 async def registration_as(message: types.Message):
     await message.delete()
-    await message.answer_photo(photo=open("img/english.jpg", "rb"), caption="Sinfingizni kiriting? ", reply_markup=ages)    
+    await message.answer_photo(photo=open("img/english.jpg", "rb"), caption="Sinfingizni kiriting? ", reply_markup=ages,)    
     
 
 
@@ -71,7 +73,7 @@ async def tuman(message: types.Message, state: FSMContext):
     await state.update_data(
         {"phone_number": phone_number}
     )
-    await message.answer("tumaningizni kiriting: ")
+    await message.answer("Iltimos tumaningizni tanlang: ", reply_markup=tumanlar)
     await sinf6.next()
 
 
@@ -81,7 +83,7 @@ async def tuman(message: types.Message, state: FSMContext):
     await state.update_data(
         {"tuman": tuman}
     )
-    await message.answer("Tolov qilinganligi haqidagi skrinshoot yuboring")
+    await message.answer_photo(photo=open("img/card.gif", "rb"), caption="tolovni qilib skrinshot yuboring: ", reply_markup=ReplyKeyboardRemove)
     await sinf6.next()
 
 

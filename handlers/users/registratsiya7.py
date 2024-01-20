@@ -5,6 +5,7 @@ from states.sinf6 import sinf6
 from keyboards.inline.tasdiqlash import tasdiqlash
 from aiogram.dispatcher.filters import state
 from aiogram.dispatcher import FSMContext
+from keyboards.default.tumanlar import tumanlar
 kanal_data = "-1001632556657"
 
 
@@ -60,7 +61,7 @@ async def tuman(message: types.Message, state: FSMContext):
     await state.update_data(
         {"phone_number": phone_number}
     )
-    await message.answer("tumaningizni kiriting: ")
+    await message.answer("Iltimos tumaningizni tanlang: ", reply_markup=tumanlar)
     await sinf6.next()
 
 
@@ -70,7 +71,7 @@ async def tuman(message: types.Message, state: FSMContext):
     await state.update_data(
         {"tuman": tuman}
     )
-    await message.answer("Tolov qilinganligi haqidagi skrinshoot yuboring")
+    await message.answer_photo(photo=open("img/card.gif", "rb"), caption="tolovni qilib skrinshot yuboring: ")
     await sinf6.next()
 
 

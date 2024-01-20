@@ -6,6 +6,7 @@ start_button = ReplyKeyboardMarkup(
         [KeyboardButton(text="⭐️ Start Registration")],
         [KeyboardButton(text="About US"), KeyboardButton(text="Settings")],
     ],
-    resize_keyboard=True
+    resize_keyboard=True,
+    
 )
 
